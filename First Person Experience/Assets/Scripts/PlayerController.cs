@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public float gravityLimit;
     public float gravityMultiplier;
     public float jumpForce;
-    public int doubleJumpCounter;
+    private int doubleJumpCounter;
+    public int doubleJumpMax;
 
     public  float cameraSpeed;
     
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         if(controller.isGrounded == true)
         {
-            doubleJumpCounter = 1;
+            doubleJumpCounter = doubleJumpMax;
         }
        
     }
