@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public GameObject hand;
+    public GameObject cam;
+    public float lookDistance;
+    public LayerMask layerMask;
+    RaycastHit hit;
+
+
     GameManager gmsc;
     public Collider triggerColl;
     // Start is called before the first frame update
@@ -16,10 +23,7 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (triggerColl == null)
-        {
-            gmsc.infoText.text = "";
-        }
+        // interact
 
         if (triggerColl != null && Input.GetKeyDown(KeyCode.E))
         {
@@ -36,6 +40,35 @@ public class PlayerInteraction : MonoBehaviour
                 leverSc.isOn = !leverSc.isOn;
             }
         }
+        //Weapon
+
+        if (hand.transform.childCount == 1 && Input.GetKeyDown(KeyCode.F))
+        {
+            hand.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            hand.transform.GetChild(0).gameObject.transform.parent = null;
+        }
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, lookDistance, layerMask))
+        {
+            gmsc.infoText.text = "Press left click to pick up";
+
+            if (hand.transform.childCount == 0 && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                hit.collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                hit.collider.gameObject.transform.parent = hand.transform;
+                hit.collider.gameObject.transform.position = hand.transform.position;
+                hit.collider.gameObject.transform.rotation = hand.transform.rotation;
+
+            }
+        }
+        else
+        {
+           if (triggerColl == null)
+           {
+               gmsc.infoText.text = "";
+           }
+        }
+
+        Debug.DrawRay(cam.transform.position, cam.transform.forward * lookDistance, Color.yellow);
     }
 
     void OnTriggerEnter(Collider other)

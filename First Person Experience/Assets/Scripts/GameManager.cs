@@ -6,10 +6,26 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Interact")]
     public TMP_Text infoText;
     public Image keyIcon;
     public bool hasKey;
 
+    [Header("Gun")]
+    RaycastWeapon rcw;
+    PlayerInteraction pli;
+    GameObject Hand;
+    GameObject Player;
+    public TMP_Text ammoCount;
+
+
+     void Start()
+    {
+        Player = GameObject.Find("Player");
+        Hand = GameObject.Find("Hand");
+        pli = Player.GetComponent<PlayerInteraction>();
+        rcw = GameObject.Find("gun").GetComponent<RaycastWeapon>();  
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,5 +38,16 @@ public class GameManager : MonoBehaviour
         {
             keyIcon.enabled = false;
         }
+       if(Hand.transform.parent == null)
+       {
+        // ammoCount.enabled = false;
+        ammoCount.gameObject.SetActive(false);
+       }
+       else
+       {
+        ammoCount.gameObject.SetActive(true);
+       }
+        //  ammoCount.text = rcw.ammo.ToString();
+        
     }
 }
