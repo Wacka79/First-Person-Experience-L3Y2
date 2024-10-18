@@ -49,9 +49,9 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, lookDistance, layerMask))
         {
-            gmsc.infoText.text = "Press left click to pick up";
+            gmsc.infoText.text = "Press E to pick up";
 
-            if (hand.transform.childCount == 0 && Input.GetKeyDown(KeyCode.Mouse0))
+            if (hand.transform.childCount == 0 && Input.GetKeyDown(KeyCode.E))
             {
                 hit.collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 hit.collider.gameObject.transform.parent = hand.transform;

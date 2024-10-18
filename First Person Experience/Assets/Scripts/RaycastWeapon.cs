@@ -14,6 +14,8 @@ public class RaycastWeapon : MonoBehaviour
     public int ammo;
     int maxAmmo;
     public float reloadTime;
+    bool active;
+    public bool isReloading;
 
     void Start()
     {
@@ -22,9 +24,9 @@ public class RaycastWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.parent != null)
+        if (transform.parent != null )
         { 
-            if ( Input.GetKeyDown(KeyCode.Mouse0 ) && ammo > 0)
+            if ( Input.GetKeyDown(KeyCode.Mouse0 ) && ammo > 0 && transform.gameObject.GetComponent<Rigidbody>().isKinematic == true)
             {
                 ammo --;
                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, shootDistance, layerMask))
@@ -34,6 +36,20 @@ public class RaycastWeapon : MonoBehaviour
             }
             
         }
+
+        if(Input.GetKeyDown(KeyCode.R) && isReloading == false)
+        {
+           StartCoroutine(Reload());
+        }
+    }
+
+    IEnumerator Reload()
+    { 
+        isReloading = true;
+       yield return new WaitForSeconds(reloadTime);
+       
+       ammo = maxAmmo;
+       isReloading = false;
     }
     
 }

@@ -38,16 +38,19 @@ public class GameManager : MonoBehaviour
         {
             keyIcon.enabled = false;
         }
-       if(Hand.transform.parent == null)
+       if(Hand.transform.childCount == 0)
        {
         // ammoCount.enabled = false;
-        ammoCount.gameObject.SetActive(false);
+        //ammoCount.gameObject.SetActive(false)
+          ammoCount.text = "";
        }
        else
        {
-        ammoCount.gameObject.SetActive(true);
+        //ammoCount.gameObject.SetActive(true);
+        
+         ammoCount.text = rcw.ammo.ToString();
        }
-        //  ammoCount.text = rcw.ammo.ToString();
+          
         
     }
 }
