@@ -41,6 +41,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
         //Weapon
+        
 
         if (hand.transform.childCount == 1 && Input.GetKeyDown(KeyCode.F))
         {
@@ -69,6 +70,11 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         Debug.DrawRay(cam.transform.position, cam.transform.forward * lookDistance, Color.yellow);
+
+        if (hand.transform.childCount == 1)
+        {
+            gmsc.infoText.text = "";
+        }
     }
 
     void OnTriggerEnter(Collider other)

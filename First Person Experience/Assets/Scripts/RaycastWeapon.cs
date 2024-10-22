@@ -8,8 +8,9 @@ public class RaycastWeapon : MonoBehaviour
     public int damage;
     public float shootDistance;
     public LayerMask layerMask;
+    public LayerMask weakPoint;
     public GameObject cam;
-    RaycastHit hit;
+    public RaycastHit hit;
     [Header("Ammo")]
     public int ammo;
     int maxAmmo;
@@ -33,6 +34,11 @@ public class RaycastWeapon : MonoBehaviour
                {
                     hit.collider.gameObject.GetComponent<Health>().hp -= damage;
                }
+               if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, shootDistance, weakPoint))
+               {
+                    hit.collider.gameObject.GetComponent<Health>().hp -= damage * 2;
+               }
+
             }
             
         }
