@@ -6,9 +6,9 @@ public class RaycastWeapon : MonoBehaviour
 {
     [Header("Gun")]
     public int damage;
+     int headshotDamage;
     public float shootDistance;
     public LayerMask layerMask;
-    public LayerMask weakPoint;
     public GameObject cam;
     public RaycastHit hit;
     [Header("Ammo")]
@@ -21,6 +21,8 @@ public class RaycastWeapon : MonoBehaviour
     void Start()
     {
         maxAmmo = ammo;
+        headshotDamage = damage * 2;
+
     }
     // Update is called once per frame
     void Update()
@@ -30,14 +32,19 @@ public class RaycastWeapon : MonoBehaviour
             if ( Input.GetKeyDown(KeyCode.Mouse0 ) && ammo > 0 && transform.gameObject.GetComponent<Rigidbody>().isKinematic == true)
             {
                 ammo --;
-               if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, shootDistance, layerMask))
-               {
-                    hit.collider.gameObject.GetComponent<Health>().hp -= damage;
-               }
-               if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, shootDistance, weakPoint))
-               {
-                    hit.collider.gameObject.GetComponent<Health>().hp -= damage * 2;
-               }
+               
+                if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, shootDistance, layerMask))
+                {
+                   if(hit.collider.CompareTag("Head"))
+                   {
+                       hit.collider.gameObject.transform.parent.gameObject.GetComponent<Health>().hp -= headshotDamage;
+                   }
+                   else
+                   {
+                       hit.collider.gameObject.GetComponent<Health>().hp -= damage;
+                   }   
+                }
+              
 
             }
             

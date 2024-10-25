@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,13 +19,19 @@ public class GameManager : MonoBehaviour
     GameObject Player;
     public TMP_Text ammoCount;
 
+    [Header("Other")]
+    public int kills;
+    public TMP_Text killCount;
+    public GameObject Enemy;
+
 
      void Start()
     {
         Player = GameObject.Find("Player");
         Hand = GameObject.Find("Hand");
         pli = Player.GetComponent<PlayerInteraction>();
-        rcw = GameObject.Find("gun").GetComponent<RaycastWeapon>();  
+        rcw = GameObject.Find("gun").GetComponent<RaycastWeapon>(); 
+        
     }
 
     // Update is called once per frame
@@ -50,7 +57,11 @@ public class GameManager : MonoBehaviour
         
          ammoCount.text = rcw.ammo.ToString();
        }
+
+       
           
+          killCount.text = kills.ToString();
+       
         
     }
 }

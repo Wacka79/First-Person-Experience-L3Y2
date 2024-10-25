@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     
     public float movementSpeed;
+    float sprintSpeed;
+    float walkSpeed;
+
+    [Header("Jump")]
     public float gravity;
     public float gravityLimit;
     public float gravityMultiplier;
@@ -26,6 +30,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        sprintSpeed = movementSpeed * 3;
+        walkSpeed = movementSpeed;
     }
 
     // Update is called once per frame
@@ -38,6 +44,7 @@ public class PlayerController : MonoBehaviour
         Movement();
         Rotation();
         Jump();
+        Sprint();
 
         if(controller.isGrounded == true)
         {
@@ -81,6 +88,17 @@ public class PlayerController : MonoBehaviour
         }
 
         
+    }
+    void Sprint()
+    {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            movementSpeed = sprintSpeed;
+        }
+        else
+        {
+            movementSpeed = walkSpeed;
+        }
     }
     
 }

@@ -9,10 +9,13 @@ public class Health : MonoBehaviour
     public bool respawn;
     public float respawnTime;
     bool active;
+    public bool isEnemy;
+    GameManager gmsc;
     // Start is called before the first frame update
     void Start()
     {
         MaxHp = hp;
+        gmsc = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,10 @@ public class Health : MonoBehaviour
             else if (!respawn)
             {
                 Destroy(gameObject);
+                if(isEnemy)
+                {
+                    gmsc.GetComponent<GameManager>().kills ++;
+                }
             }
         }
     }

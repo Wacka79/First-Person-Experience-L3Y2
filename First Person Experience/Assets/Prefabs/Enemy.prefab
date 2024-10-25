@@ -145,12 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c96d77aa727154185d84e1cf1ba675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyDamage: 0
+  EnemyDamage: 5
   attackDelay: 2
   attackRate: 1
   attackDistance: 2.5
   health: 0
-  weakness: {fileID: 8436223587331608440}
 --- !u!114 &1393249351939727552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +165,7 @@ MonoBehaviour:
   hp: 10
   respawn: 0
   respawnTime: 0
+  isEnemy: 1
 --- !u!1 &8436223587331608440
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,9 +178,9 @@ GameObject:
   - component: {fileID: 2566020968001784509}
   - component: {fileID: 7439761452228451327}
   - component: {fileID: 5500649618992608826}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: weakPoint
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

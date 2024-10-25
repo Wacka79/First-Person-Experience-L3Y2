@@ -11,18 +11,21 @@ public class MoveEnemy : MonoBehaviour
 
     NavMeshAgent navAgent;
 
-    RaycastWeapon rcw;
-    public GameObject weakness;
-    Health hsc;
+    //RaycastWeapon rcw;
+    //public GameObject weakness;
+    //public GameObject Enemy;
+    //Health hsc;
+    //public LayerMask weakPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = GameObject.FindWithTag("Player");
+      playerObject = GameObject.FindWithTag("Player");
+      
         navAgent = GetComponent<NavMeshAgent>();
-        rcw = GameObject.Find("gun").GetComponent<RaycastWeapon>();
+        //rcw = GameObject.Find("gun").GetComponent<RaycastWeapon>();
        
-        hsc = GameObject.Find("Enemy").GetComponent<Health>();
+       // hsc = Enemy.GetComponent<Health>();
 
     }
 
@@ -39,10 +42,10 @@ public class MoveEnemy : MonoBehaviour
             }
             
         }
-        if(rcw.hit.collider)
-        {
-          hsc.hp = hsc.hp - rcw.damage * 2;
-        }
+        //if(rcw.hit.collider.gameObject.layer == 7)
+        //{
+         // hsc.hp -= rcw.damage * 2;
+       // }
     }
 
     void Move()
