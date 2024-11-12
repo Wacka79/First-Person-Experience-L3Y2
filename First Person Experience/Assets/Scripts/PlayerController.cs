@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,13 +25,17 @@ public class PlayerController : MonoBehaviour
 
     public GameObject cam;
     public GameObject playerHead;
+
+    public Animator bbox;
+
+    public string spawnPoint;
     
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        sprintSpeed = movementSpeed * 3;
+        sprintSpeed = movementSpeed + movementSpeed;
         walkSpeed = movementSpeed;
     }
 
@@ -101,4 +106,24 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+
+    public IEnumerator ResetPos()
+    {
+        bbox.SetBool("Out", true);
+        controller.enabled = false;
+        transform.position = GameObject.Find(spawnPoint).transform.position;
+        yield return new WaitForSeconds(.1f);
+        controller.enabled = true;
+        
+    }
+
+    public IEnumerator LoadNewScene(string levelName)
+    {
+        bbox.SetBool("Out", false);
+        controller.enabled = false;
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(levelName);
+        
+        
+    }
 }
