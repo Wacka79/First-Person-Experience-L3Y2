@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         Player = GameObject.Find("Player");
         Hand = GameObject.Find("Hand");
         pli = Player.GetComponent<PlayerInteraction>();
-        rcw = GameObject.Find("gun").GetComponent<RaycastWeapon>(); 
+        rcw = GameObject.FindWithTag("Gun").GetComponent<RaycastWeapon>(); 
         
     }
 
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         //ammoCount.gameObject.SetActive(false)
           ammoCount.text = "";
        }
-       else
+       else if (Hand.transform.childCount == 1 && Hand.transform.GetChild(0).gameObject.GetComponent<RaycastWeapon>() != null)
        {
         //ammoCount.gameObject.SetActive(true);
         

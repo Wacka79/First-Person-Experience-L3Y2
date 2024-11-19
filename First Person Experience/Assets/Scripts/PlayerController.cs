@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y < -20f)
+        {
+            StartCoroutine(ResetOnDeath());
+        }
         //  if (controller.isGrounded)
         // {
         //     gravity = 0;
@@ -105,8 +109,30 @@ public class PlayerController : MonoBehaviour
             movementSpeed = walkSpeed;
         }
     }
+
+    void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            StartCoroutine(ResetOnDeath());
+        }
+    }
     
 
+    public IEnumerator ResetOnDeath()
+    {
+        bbox.SetBool("Out", false);
+        controller.enabled = false;
+        yield return new WaitForSeconds(1f);
+
+        transform.position = GameObject.Find(spawnPoint).transform.position;
+        yield return new WaitForSeconds(.1f);
+        bbox.SetBool("Out", true);
+        controller.enabled = true;
+        
+    }
+
+    
     public IEnumerator ResetPos()
     {
         bbox.SetBool("Out", true);

@@ -48,9 +48,18 @@ public class PlayerInteraction : MonoBehaviour
             hand.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().isKinematic = false;
             hand.transform.GetChild(0).gameObject.transform.parent = null;
         }
+        else if (hand.transform.childCount == 1 && Input.GetKeyDown(KeyCode.G) && hand.transform.GetChild(0).tag != ("Gun"))
+        {
+            GameObject currentObj;
+            currentObj = hand.transform.GetChild(0).gameObject;
+            currentObj.GetComponent<Rigidbody>().isKinematic = false;
+
+            currentObj.gameObject.GetComponent<Rigidbody>().AddForce(currentObj.transform.up * -20f, ForceMode.Impulse);
+            currentObj.gameObject.transform.parent = null;
+        }
         else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, lookDistance, layerMask))
         {
-            gmsc.infoText.text = "Press E to pick up";
+            gmsc.infoText.text = "Press E to pick up " + hit.collider.gameObject.name;
 
             if (hand.transform.childCount == 0 && Input.GetKeyDown(KeyCode.E))
             {

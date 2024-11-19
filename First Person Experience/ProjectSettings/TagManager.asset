@@ -9,6 +9,8 @@ TagManager:
   - Lever
   - SpawnPoints
   - Head
+  - Spikes
+  - Gun
   layers:
   - Default
   - TransparentFX

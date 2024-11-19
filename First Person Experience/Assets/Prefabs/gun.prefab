@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7315980506178180178}
   m_Layer: 3
   m_Name: gun
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2520845040221293760}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0.463, y: 0.94672465, z: 8.890642}
   m_LocalScale: {x: 0.047077455, y: 0.10789248, z: 0.11869338}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &7022460197041118901
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  headshotDamage: 10
   shootDistance: 15
   layerMask:
     serializedVersion: 2

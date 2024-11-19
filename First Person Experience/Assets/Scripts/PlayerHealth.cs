@@ -7,11 +7,14 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public float health;
+    public float maxHealth;
     public Slider healthSlider;
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
         healthSlider.maxValue = health;
+
     }
 
     // Update is called once per frame
@@ -21,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
         
         if(health <= 0)
         {
+            health = maxHealth;
             GameOver();
         }
     }
