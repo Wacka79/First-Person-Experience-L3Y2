@@ -103,10 +103,12 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift))
         {
             movementSpeed = sprintSpeed;
+            gravityMultiplier = 8f;
         }
         else
         {
             movementSpeed = walkSpeed;
+            gravityMultiplier = 5f;
         }
     }
 
