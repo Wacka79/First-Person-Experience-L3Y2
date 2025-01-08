@@ -13,11 +13,15 @@ public class PlayerController : MonoBehaviour
     [Header("Jump")]
     public float gravity;
     public float gravityLimit;
-    public float gravityMultiplier;
+    public float gravityLimitCon;
+
+    private float gravityMultiplier;
+    public float gravityMultiplierCon;
     public float jumpForce;
     private int doubleJumpCounter;
     public int doubleJumpMax;
 
+    [Header("Miscellaneous")]
     public  float cameraSpeed;
     
     Vector2 inputs;
@@ -37,6 +41,9 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         sprintSpeed = movementSpeed + movementSpeed;
         walkSpeed = movementSpeed;
+        gravityMultiplier = gravityMultiplierCon;
+        gravityLimit = gravityLimitCon;
+        
     }
 
     // Update is called once per frame
@@ -54,6 +61,7 @@ public class PlayerController : MonoBehaviour
         Rotation();
         Jump();
         Sprint();
+        Glide();
 
         if(controller.isGrounded == true)
         {
@@ -100,15 +108,29 @@ public class PlayerController : MonoBehaviour
     }
     void Sprint()
     {
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.LeftShift) && controller.isGrounded == true)
         {
             movementSpeed = sprintSpeed;
-            gravityMultiplier = 8f;
+            gravityMultiplier = gravityMultiplierCon + 3;
         }
         else
         {
             movementSpeed = walkSpeed;
-            gravityMultiplier = 5f;
+            gravityMultiplier = gravityMultiplierCon;
+        }
+    }
+
+    void Glide()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            //gravityMultiplier = gravityMultiplier / 6;
+            gravityLimit = gravityLimitCon / 40;
+        }
+        else
+        {
+            //gravityMultiplier = gravityMultiplierCon;
+            gravityLimit = gravityLimitCon;
         }
     }
 
@@ -154,4 +176,6 @@ public class PlayerController : MonoBehaviour
         
         
     }
+
+    
 }

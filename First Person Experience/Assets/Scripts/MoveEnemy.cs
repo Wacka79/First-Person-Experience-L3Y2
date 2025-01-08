@@ -5,11 +5,15 @@ using UnityEngine.AI;
 
 public class MoveEnemy : MonoBehaviour
 {
-    public float EnemyDamage, attackDelay, attackRate, attackDistance, health;
+    public float  attackDelay, attackRate, attackDistance, health;
+    public float EnemyDamageCon;
+    public float EnemyDamage;
 
     GameObject playerObject;
 
     NavMeshAgent navAgent;
+    HandSwap HsSc;
+    PlayerMana plm;
 
     //RaycastWeapon rcw;
     //public GameObject weakness;
@@ -27,11 +31,25 @@ public class MoveEnemy : MonoBehaviour
        
        // hsc = Enemy.GetComponent<Health>();
 
+       EnemyDamage = EnemyDamageCon;
+       HsSc = playerObject.GetComponent<HandSwap>();
+       plm = playerObject.GetComponent<PlayerMana>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if(HsSc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0) // check hand script for shield, button and mana from player mana
+        {
+            EnemyDamage = 0;
+            plm.currentMana -= Time.deltaTime * plm.rechargeRate / 2;
+        }
+        else
+        {
+            EnemyDamage = EnemyDamageCon;
+        }
         Move();
         if(Time.time > attackDelay)
         {

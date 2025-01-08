@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene1.unity
     guid: ec6d6145c52e2b949869fc6cccf58f2f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CyberCity.unity
     guid: fe179ee639de65f47a1ff22ad140c96c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CyberCityInside.unity
     guid: ec741b5b42572b9449df1f734de99689
   m_configObjects: {}

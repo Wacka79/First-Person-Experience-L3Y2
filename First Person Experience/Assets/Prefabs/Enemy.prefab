@@ -145,11 +145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c96d77aa727154185d84e1cf1ba675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyDamage: 5
   attackDelay: 2
   attackRate: 1
   attackDistance: 2.5
   health: 0
+  EnemyDamageCon: 10
+  EnemyDamage: 0
 --- !u!114 &1393249351939727552
 MonoBehaviour:
   m_ObjectHideFlags: 0
