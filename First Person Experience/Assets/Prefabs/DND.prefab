@@ -209,6 +209,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2068361282115357334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2468530079266473195}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2468530079266473195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068361282115357334}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.46500003, y: -0.02699995, z: 1.0240002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9039616962357984374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3004212895323047111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,7 +2387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5492024004977647655, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2468530079266473195}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8151446027979652833, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
@@ -2402,6 +2437,10 @@ MonoBehaviour:
   handRenderer: {fileID: 0}
   shield: 0
   fire: 0
+  fireProjectile: {fileID: 2142870229203983459, guid: bce2bb5a7b62027438de14d98d5029e7,
+    type: 3}
+  firePoint: {fileID: 2468530079266473195}
+  head: {fileID: 9039616962357984374}
 --- !u!114 &8496604223581116480
 MonoBehaviour:
   m_ObjectHideFlags: 0

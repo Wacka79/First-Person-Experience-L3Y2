@@ -21,10 +21,10 @@ public class PlayerMana : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKey(KeyCode.L))
-             {
-                 currentMana = 0;
-             }
+        // if (Input.GetKey(KeyCode.L))
+        //      {
+        //          currentMana = 0;
+        //      }
 
         if (currentMana >= maxMana) // stop mana from going over max value
         {

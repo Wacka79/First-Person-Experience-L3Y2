@@ -11,6 +11,7 @@ TagManager:
   - Head
   - Spikes
   - Gun
+  - Fire
   layers:
   - Default
   - TransparentFX

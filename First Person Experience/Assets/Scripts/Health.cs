@@ -11,18 +11,27 @@ public class Health : MonoBehaviour
     bool active;
     public bool isEnemy;
     GameManager gmsc;
+    
     // Start is called before the first frame update
     void Start()
     {
         MaxHp = hp;
         gmsc = GameObject.Find("GameManager").GetComponent<GameManager>();
+       
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        
+
+
         if(hp <= 0)
         {
+            
+
             if(!active)
             {
                 StartCoroutine(RespawnObject());
@@ -37,6 +46,7 @@ public class Health : MonoBehaviour
             }
         }
     }
+
 
     IEnumerator RespawnObject()
     {

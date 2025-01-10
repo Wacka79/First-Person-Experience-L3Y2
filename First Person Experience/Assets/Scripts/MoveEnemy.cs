@@ -15,6 +15,14 @@ public class MoveEnemy : MonoBehaviour
     HandSwap HsSc;
     PlayerMana plm;
 
+    public GameObject enemy;
+    private Renderer enemyRenderer;
+    public bool isBurning;
+    Health hsc;
+
+
+    
+
     //RaycastWeapon rcw;
     //public GameObject weakness;
     //public GameObject Enemy;
@@ -34,6 +42,10 @@ public class MoveEnemy : MonoBehaviour
        EnemyDamage = EnemyDamageCon;
        HsSc = playerObject.GetComponent<HandSwap>();
        plm = playerObject.GetComponent<PlayerMana>();
+       enemyRenderer = enemy.GetComponent<MeshRenderer>();
+       hsc = enemy.GetComponent<Health>();
+        
+       
 
     }
 
@@ -50,7 +62,11 @@ public class MoveEnemy : MonoBehaviour
         {
             EnemyDamage = EnemyDamageCon;
         }
+
         Move();
+        Burning();
+
+
         if(Time.time > attackDelay)
         {
             if(Vector3.Distance(playerObject.transform.position, transform.position) <= attackDistance)
@@ -76,4 +92,22 @@ public class MoveEnemy : MonoBehaviour
         playerObject.GetComponent<PlayerHealth>().health -= EnemyDamage;
         attackDelay = Time.time + attackRate;
     }
+    
+    void Burning()
+    {
+        if(isBurning == true && hsc.isEnemy == true)
+        {
+            enemyRenderer.material.SetColor("_BaseColor" , Color.blue);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision) 
+    {
+        if(collision.gameObject.tag == ("Fire"))
+        {
+            isBurning = true;
+        }
+        
+    }
+    
 }

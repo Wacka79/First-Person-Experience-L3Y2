@@ -14,6 +14,9 @@ public class HandSwap : MonoBehaviour
     //public GameObject Enemy;
     [Header("Fire")]
     public bool fire;
+    public Rigidbody fireProjectile;
+    public Transform firePoint;
+    public Transform head;
     
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,7 @@ public class HandSwap : MonoBehaviour
 
        Colour();
        //Shield();
+       Fire();
     }
 
     void Colour()
@@ -83,4 +87,23 @@ public class HandSwap : MonoBehaviour
     //         //Enemy.GetComponent<MoveEnemy>().EnemyDamage = 5;
     //     }
     // }  
+
+    void Fire()
+    {
+        if( fire == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Rigidbody clone;
+            clone = Instantiate(fireProjectile, firePoint.position, head.rotation);
+
+            //clone.velocity = transform.TransformDirection(Vector3.forward * 25);
+            clone.velocity = clone.transform.forward * 25;
+
+            Destroy(clone.gameObject, 3);
+        }
+    }
+
+    // void DestroyObjectDelayed()
+    // {
+    //     Destroy(fireProjectile, 3);
+    // }
 }
