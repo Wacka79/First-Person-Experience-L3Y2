@@ -12,6 +12,7 @@ TagManager:
   - Spikes
   - Gun
   - Fire
+  - Slow
   layers:
   - Default
   - TransparentFX

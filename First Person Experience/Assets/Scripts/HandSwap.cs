@@ -17,6 +17,10 @@ public class HandSwap : MonoBehaviour
     public Rigidbody fireProjectile;
     public Transform firePoint;
     public Transform head;
+
+    [Header("Slow")]
+    public bool slow;
+    public Rigidbody slowProjectile;
     
     // Start is called before the first frame update
     void Start()
@@ -40,9 +44,9 @@ public class HandSwap : MonoBehaviour
 
         if(handValue <= 0)
         {
-            handValue = 3;
+            handValue = 4;
         }
-        if(handValue >= 4)
+        if(handValue >= 5)
         {
             handValue = 1;
         }
@@ -50,6 +54,7 @@ public class HandSwap : MonoBehaviour
        Colour();
        //Shield();
        Fire();
+       Slow();
     }
 
     void Colour()
@@ -59,18 +64,28 @@ public class HandSwap : MonoBehaviour
             handRenderer.material.SetColor("_BaseColor" , Color.blue);
             fire = false;
             shield = false;
+            slow = false;
         }
         else if(handValue == 2)
         {
             handRenderer.material.SetColor("_BaseColor" , Color.cyan);
             fire = false;
             shield = true;
+            slow = false;
         }
         else if(handValue == 3)
         {
             handRenderer.material.SetColor("_BaseColor" , Color.red);
             fire = true;
             shield = false;
+            slow = false;
+        }
+        else if(handValue == 4)
+        {
+            handRenderer.material.SetColor("_BaseColor" , Color.grey);
+            fire = false;
+            shield = false;
+            slow = true;
         }
     }  
 
@@ -102,8 +117,19 @@ public class HandSwap : MonoBehaviour
         }
     }
 
-    // void DestroyObjectDelayed()
-    // {
-    //     Destroy(fireProjectile, 3);
-    // }
+    void Slow()
+    {
+        if( slow == true && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Rigidbody clone;
+            clone = Instantiate(slowProjectile, firePoint.position, head.rotation);
+
+            //clone.velocity = transform.TransformDirection(Vector3.forward * 25);
+            clone.velocity = clone.transform.forward * 25;
+
+            Destroy(clone.gameObject, 3);
+        }
+    }
+
+   
 }

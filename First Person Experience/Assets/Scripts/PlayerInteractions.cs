@@ -13,11 +13,19 @@ public class PlayerInteraction : MonoBehaviour
 
     GameManager gmsc;
     public Collider triggerColl;
+    Collectable csc;
+    public GameObject collectable;
+    PlayerHealth plhsc;
+    PlayerMana plmsc;
+
     // Start is called before the first frame update
     void Start()
     {
         gmsc = GameObject.Find("GameManager").GetComponent<GameManager>();
         gmsc.infoText.text = "";
+        csc = collectable.GetComponent<Collectable>();
+        plhsc = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        plmsc = GameObject.FindWithTag("Player").GetComponent<PlayerMana>();
     }
 
     // Update is called once per frame
@@ -118,5 +126,17 @@ public class PlayerInteraction : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         triggerColl = null;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == ("collectable"))
+        {
+            plhsc.health += plhsc.health + csc.heal;
+            plhsc.maxHealth += plhsc.maxHealth + csc.healthUp;
+            plmsc.maxMana += plmsc.maxMana + csc.manaUp;
+            plmsc.rechargeRate += plmsc.rechargeRate + csc.manaRechargeUp;
+
+        }
     }
 }

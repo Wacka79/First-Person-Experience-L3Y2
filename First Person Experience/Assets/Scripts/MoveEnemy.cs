@@ -5,20 +5,34 @@ using UnityEngine.AI;
 
 public class MoveEnemy : MonoBehaviour
 {
-    public float  attackDelay, attackRate, attackDistance, health;
+    public float  attackDelay, attackRate, attackDistance;
     public float EnemyDamageCon;
     public float EnemyDamage;
+    public float attackDelayCon;
 
+    [Header("Burn")]
+    public bool isBurning;
+    public float dtimer;
+
+    [Header("Slow")]
+    public bool isSlowed;
+    public float stimer;
+
+
+    [Header("Components")]
     GameObject playerObject;
-
     NavMeshAgent navAgent;
+    public GameObject enemy;
+    private Renderer enemyRenderer;
+
+    [Header ("Refrerences")]
+    Health hsc;
+    RaycastWeapon rcwsc;
     HandSwap HsSc;
     PlayerMana plm;
 
-    public GameObject enemy;
-    private Renderer enemyRenderer;
-    public bool isBurning;
-    Health hsc;
+    
+    
 
 
     
@@ -35,15 +49,15 @@ public class MoveEnemy : MonoBehaviour
       playerObject = GameObject.FindWithTag("Player");
       
         navAgent = GetComponent<NavMeshAgent>();
-        //rcw = GameObject.Find("gun").GetComponent<RaycastWeapon>();
-       
-       // hsc = Enemy.GetComponent<Health>();
-
+    
+       attackDelay = attackDelayCon;
        EnemyDamage = EnemyDamageCon;
+
        HsSc = playerObject.GetComponent<HandSwap>();
        plm = playerObject.GetComponent<PlayerMana>();
        enemyRenderer = enemy.GetComponent<MeshRenderer>();
        hsc = enemy.GetComponent<Health>();
+       rcwsc = GameObject.FindWithTag("Gun").GetComponent<RaycastWeapon>();
         
        
 
@@ -52,6 +66,7 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
         if(HsSc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0) // check hand script for shield, button and mana from player mana
         {
@@ -65,6 +80,7 @@ public class MoveEnemy : MonoBehaviour
 
         Move();
         Burning();
+        Slowed();
 
 
         if(Time.time > attackDelay)
@@ -97,17 +113,52 @@ public class MoveEnemy : MonoBehaviour
     {
         if(isBurning == true && hsc.isEnemy == true)
         {
-            enemyRenderer.material.SetColor("_BaseColor" , Color.blue);
+            StartCoroutine(damageTimer());
+            enemyRenderer.material.SetColor("_BaseColor" , Color.yellow);
+            hsc.hp -= ((float)rcwsc.damage / 2 * Time.deltaTime);
         }
     }
+    void Slowed()
+    {
+        if(isSlowed == true && hsc.isEnemy == true)
+        {
+            StartCoroutine(slowTimer());
+            enemyRenderer.material.SetColor("_BaseColor" , Color.grey);
+            attackDelay = 1f;
 
+        }
+    }
     void OnCollisionEnter(Collision collision) 
     {
         if(collision.gameObject.tag == ("Fire"))
         {
             isBurning = true;
+
         }
         
+        if(collision.gameObject.tag ==("Slow"))
+        {
+            isSlowed = true;
+        }
+    }
+    
+
+    IEnumerator damageTimer()
+    {
+        yield return new WaitForSeconds(dtimer);
+
+        isBurning = false;
+        enemyRenderer.material.SetColor("_BaseColor" , Color.red);
+    }
+
+    IEnumerator slowTimer()
+    {
+        yield return new WaitForSeconds(stimer);
+
+        isSlowed = false;
+        attackDelay = attackDelayCon;
+        enemyRenderer.material.SetColor("_BaseColor" , Color.red);
+
     }
     
 }

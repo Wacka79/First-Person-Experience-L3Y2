@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int hp;
-    int MaxHp;
+    public float hp;
+    float MaxHp;
     public bool respawn;
     public float respawnTime;
     bool active;

@@ -2441,6 +2441,9 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 2468530079266473195}
   head: {fileID: 9039616962357984374}
+  slow: 0
+  slowProjectile: {fileID: -1947703994094931349, guid: 76e8aa444eafbd442be5dbf4a8f3df7c,
+    type: 3}
 --- !u!114 &8496604223581116480
 MonoBehaviour:
   m_ObjectHideFlags: 0

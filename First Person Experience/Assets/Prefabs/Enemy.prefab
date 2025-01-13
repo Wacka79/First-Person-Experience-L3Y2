@@ -148,9 +148,11 @@ MonoBehaviour:
   attackDelay: 2
   attackRate: 1
   attackDistance: 2.5
-  health: 0
   EnemyDamageCon: 10
   EnemyDamage: 0
+  isBurning: 0
+  timer: 2
+  enemy: {fileID: 278540660460704516}
 --- !u!114 &1393249351939727552
 MonoBehaviour:
   m_ObjectHideFlags: 0
