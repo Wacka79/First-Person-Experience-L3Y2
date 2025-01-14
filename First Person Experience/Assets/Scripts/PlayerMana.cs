@@ -42,7 +42,7 @@ public class PlayerMana : MonoBehaviour
     {
         if( controller.velocity == Vector3.zero)
         {
-             if (Input.GetKey(KeyCode.P) && currentMana < maxMana) // check movement mana and button held (line 42 + 44)
+             if (Input.GetKey(KeyCode.Q) && currentMana < maxMana) // check movement mana and button held (line 42 + 44)
              {
                 // Debug.Log("r");
                 // currentMana += (Mathf.RoundToInt(rechargeRate * Time.deltaTime)); works with int + float (not smooth, needs big values 500+)

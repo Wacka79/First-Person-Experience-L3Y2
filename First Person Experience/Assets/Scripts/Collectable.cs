@@ -9,16 +9,14 @@ public class Collectable : MonoBehaviour
     public float manaRechargeUp;
     public float healthUp;
 
-    // PlayerInteraction plisc;
-    // PlayerHealth plhsc;
+
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        // plisc = GameObject.FindWithTag("Player").GetComponent<PlayerInteraction>();
-        // plhsc = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
-
+       
     }
 
     // Update is called once per frame

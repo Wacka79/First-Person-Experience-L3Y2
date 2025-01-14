@@ -14,7 +14,7 @@ public class PlayerInteraction : MonoBehaviour
     GameManager gmsc;
     public Collider triggerColl;
     Collectable csc;
-    public GameObject collectable;
+    // public GameObject collectable;
     PlayerHealth plhsc;
     PlayerMana plmsc;
 
@@ -23,7 +23,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         gmsc = GameObject.Find("GameManager").GetComponent<GameManager>();
         gmsc.infoText.text = "";
-        csc = collectable.GetComponent<Collectable>();
         plhsc = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         plmsc = GameObject.FindWithTag("Player").GetComponent<PlayerMana>();
     }
@@ -120,23 +119,48 @@ public class PlayerInteraction : MonoBehaviour
        if (other.gameObject.CompareTag("Lever"))
        {
              gmsc.infoText.text = "Press E to switch";
-           }
-    }
+           
+       }
+       if(other.gameObject.CompareTag("collectable"))
+       {
+         csc = other.GetComponent<Collectable>();
 
+         plhsc.health = plhsc.health + csc.heal;
+
+         Destroy(other.gameObject);
+
+       }
+       else if(other.gameObject.CompareTag("collectableHpMax"))
+       {
+         csc = other.GetComponent<Collectable>();
+            
+         plhsc.maxHealth = plhsc.maxHealth + csc.healthUp;
+
+         Destroy(other.gameObject);
+       }
+       else if(other.gameObject.CompareTag("collectableMpMax"))
+       {
+         csc = other.GetComponent<Collectable>();
+
+         plmsc.maxMana = plmsc.maxMana + csc.manaUp;
+
+         Destroy(other.gameObject);
+       }
+    //    else if(other.gameObject.CompareTag("collectableRecharge"))
+    //    {
+    //      csc = other.GetComponent<Collectable>();
+
+    //      plmsc.rechargeRate += plmsc.rechargeRate + csc.manaRechargeUp;
+           
+    //      Destroy(other.gameObject);
+    //    }
+        
+
+    }
     void OnTriggerExit(Collider other)
     {
         triggerColl = null;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == ("collectable"))
-        {
-            plhsc.health += plhsc.health + csc.heal;
-            plhsc.maxHealth += plhsc.maxHealth + csc.healthUp;
-            plmsc.maxMana += plmsc.maxMana + csc.manaUp;
-            plmsc.rechargeRate += plmsc.rechargeRate + csc.manaRechargeUp;
-
-        }
-    }
+    
 }

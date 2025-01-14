@@ -13,6 +13,10 @@ TagManager:
   - Gun
   - Fire
   - Slow
+  - collectable
+  - collectableHpMax
+  - collectableMpMax
+  - collectableRecharge
   layers:
   - Default
   - TransparentFX

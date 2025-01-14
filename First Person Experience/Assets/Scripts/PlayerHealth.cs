@@ -21,11 +21,16 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         healthSlider.value = health;
+        if(health >= maxHealth)
+        {
+            health = maxHealth;
+        }
         
         if(health <= 0)
         {
             health = maxHealth;
             GameOver();
+            
         }
     }
 

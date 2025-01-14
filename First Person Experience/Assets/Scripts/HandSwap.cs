@@ -8,6 +8,8 @@ public class HandSwap : MonoBehaviour
     //PlayerInteractions pli;
     public GameObject hand;
     public Renderer handRenderer;
+
+    PlayerMana plmsc;
     [Header("Shield")]
     public bool shield;
     //MoveEnemy MoSc;
@@ -28,6 +30,7 @@ public class HandSwap : MonoBehaviour
         handRenderer = hand.GetComponent<MeshRenderer>();
         handValue = 1;
         //MoSc = Enemy.GetComponent<MoveEnemy>();
+         plmsc = GameObject.FindWithTag("Player").GetComponent<PlayerMana>();
     }
 
     // Update is called once per frame
@@ -105,7 +108,7 @@ public class HandSwap : MonoBehaviour
 
     void Fire()
     {
-        if( fire == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if( fire == true && Input.GetKeyDown(KeyCode.Mouse0) && plmsc.currentMana > 0f)
         {
             Rigidbody clone;
             clone = Instantiate(fireProjectile, firePoint.position, head.rotation);
@@ -114,12 +117,13 @@ public class HandSwap : MonoBehaviour
             clone.velocity = clone.transform.forward * 25;
 
             Destroy(clone.gameObject, 3);
+            plmsc.currentMana = plmsc.currentMana - 6.25f;
         }
     }
 
     void Slow()
     {
-        if( slow == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if( slow == true && Input.GetKeyDown(KeyCode.Mouse0) && plmsc.currentMana > 0f)
         {
             Rigidbody clone;
             clone = Instantiate(slowProjectile, firePoint.position, head.rotation);
@@ -128,6 +132,7 @@ public class HandSwap : MonoBehaviour
             clone.velocity = clone.transform.forward * 25;
 
             Destroy(clone.gameObject, 3);
+            plmsc.currentMana = plmsc.currentMana - 10f;
         }
     }
 
