@@ -150,8 +150,12 @@ MonoBehaviour:
   attackDistance: 2.5
   EnemyDamageCon: 10
   EnemyDamage: 0
+  attackDelayCon: 2
+  attackRateCon: 1
   isBurning: 0
-  timer: 2
+  dtimer: 0
+  isSlowed: 0
+  stimer: 0
   enemy: {fileID: 278540660460704516}
 --- !u!114 &1393249351939727552
 MonoBehaviour:

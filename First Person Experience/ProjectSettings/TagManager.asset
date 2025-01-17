@@ -16,7 +16,6 @@ TagManager:
   - collectable
   - collectableHpMax
   - collectableMpMax
-  - collectableRecharge
   layers:
   - Default
   - TransparentFX

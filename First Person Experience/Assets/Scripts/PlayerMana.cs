@@ -10,11 +10,13 @@ public class PlayerMana : MonoBehaviour
     public Slider manaSlider;
     public CharacterController controller;
     public float rechargeRate;
+    public bool isRecharging;
     // Start is called before the first frame update
     void Start()
     {
         currentMana = maxMana; // start puts current mana to max mana
         manaSlider.maxValue = maxMana;
+        isRecharging = false;
     }
 
     // Update is called once per frame
@@ -35,22 +37,33 @@ public class PlayerMana : MonoBehaviour
         manaRecharge();
         
         Vector3 horizontalVelocity = controller.velocity;
-        horizontalVelocity = new Vector3(controller.velocity.x, 0, controller.velocity.z); // check character controller componant for movement
+        horizontalVelocity = new Vector3(controller.velocity.x, controller.velocity.y, controller.velocity.z); // check character controller componant for movement
     }
 
     void manaRecharge()
     {
         if( controller.velocity == Vector3.zero)
         {
-             if (Input.GetKey(KeyCode.Q) && currentMana < maxMana) // check movement mana and button held (line 42 + 44)
+             if (Input.GetKeyUp(KeyCode.Q) && currentMana < maxMana  ) // check movement mana and button held (line 42 + 44)
              {
+                isRecharging = true;
+
+             
+             }
+
+            if(isRecharging == true)
+            {
                 // Debug.Log("r");
                 // currentMana += (Mathf.RoundToInt(rechargeRate * Time.deltaTime)); works with int + float (not smooth, needs big values 500+)
-                           
-
                 currentMana += Time.deltaTime * rechargeRate; // smoothly recharges mana (doesnt need massive values)
-             }
-        }
+
+            }
+                           
+            if(Input.anyKey)
+            {
+                isRecharging = false;
+            }
+        }     
        
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    [Header("Move")]
     public float movementSpeed;
     float sprintSpeed;
     float walkSpeed;
@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public float gravity;
     public float gravityLimit;
     public float gravityLimitCon;
-
     private float gravityMultiplier;
     public float gravityMultiplierCon;
     public float jumpForce;
@@ -23,15 +22,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Miscellaneous")]
     public  float cameraSpeed;
-    
     Vector2 inputs;
     public CharacterController controller;
-
     public GameObject cam;
     public GameObject playerHead;
-
     public Animator bbox;
-
     public string spawnPoint;
     
 
@@ -39,7 +34,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        sprintSpeed = movementSpeed + movementSpeed;
+        sprintSpeed = movementSpeed * 2;
         walkSpeed = movementSpeed;
         gravityMultiplier = gravityMultiplierCon;
         gravityLimit = gravityLimitCon;
@@ -53,10 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(ResetOnDeath());
         }
-        //  if (controller.isGrounded)
-        // {
-        //     gravity = 0;
-        // }
+       
         Movement();
         Rotation();
         Jump();

@@ -9,6 +9,7 @@ public class MoveEnemy : MonoBehaviour
     public float EnemyDamageCon;
     public float EnemyDamage;
     public float attackDelayCon;
+    public float attackRateCon;
 
     [Header("Burn")]
     public bool isBurning;
@@ -52,6 +53,7 @@ public class MoveEnemy : MonoBehaviour
     
        attackDelay = attackDelayCon;
        EnemyDamage = EnemyDamageCon;
+       attackRate = attackRateCon;
 
        HsSc = playerObject.GetComponent<HandSwap>();
        plm = playerObject.GetComponent<PlayerMana>();
@@ -124,7 +126,7 @@ public class MoveEnemy : MonoBehaviour
         {
             StartCoroutine(slowTimer());
             enemyRenderer.material.SetColor("_BaseColor" , Color.grey);
-            attackDelay = 1f;
+            attackRate = 2f;
 
         }
     }
@@ -156,7 +158,7 @@ public class MoveEnemy : MonoBehaviour
         yield return new WaitForSeconds(stimer);
 
         isSlowed = false;
-        attackDelay = attackDelayCon;
+        attackRate = attackRateCon;
         enemyRenderer.material.SetColor("_BaseColor" , Color.red);
 
     }
