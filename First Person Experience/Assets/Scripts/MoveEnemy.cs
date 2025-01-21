@@ -73,7 +73,7 @@ public class MoveEnemy : MonoBehaviour
         if(HsSc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0) // check hand script for shield, button and mana from player mana
         {
             EnemyDamage = 0;
-            plm.currentMana -= Time.deltaTime * plm.rechargeRate / 2;
+            plm.currentMana -= Time.deltaTime * plm.rechargeRate / 3;
         }
         else
         {

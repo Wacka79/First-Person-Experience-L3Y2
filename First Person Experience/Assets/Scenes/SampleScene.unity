@@ -4217,16 +4217,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2143663524441747792, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
-        type: 3}
-      propertyPath: collectable
-      value: 
-      objectReference: {fileID: 4499897434899866994, guid: 98b4718def58fcf4899fb24c0c4c474f,
-        type: 3}
     - target: {fileID: 4597069969803396279, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
         type: 3}
       propertyPath: m_Name
       value: DND
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496604223581116480, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
+        type: 3}
+      propertyPath: maxMana
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496604223581116480, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
+        type: 3}
+      propertyPath: rechargeRate
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8881680951040458408, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
         type: 3}
@@ -4368,6 +4372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361334856857609537, guid: ce71685bf553f5849a12b12bbb1175ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

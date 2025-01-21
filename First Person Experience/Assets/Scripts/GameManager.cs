@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,10 +20,20 @@ public class GameManager : MonoBehaviour
     GameObject Player;
     public TMP_Text ammoCount;
 
+    [Header("Spell")]
+    public TMP_Text spellText;
+    public float spellTextTimer;
+    HandSwap hsc;
+    public bool hadSwapped;
+    PlayerMana plm;
+    public GameObject shieldTop;
+    public GameObject shieldBottom;
+
     [Header("Other")]
     public int kills;
     public TMP_Text killCount;
     public GameObject Enemy;
+
 
 
      void Start()
@@ -31,6 +42,12 @@ public class GameManager : MonoBehaviour
         Hand = GameObject.Find("Hand");
         pli = Player.GetComponent<PlayerInteraction>();
         rcw = GameObject.FindWithTag("Gun").GetComponent<RaycastWeapon>(); 
+        hsc = Player.GetComponent<HandSwap>();
+        plm = Player.GetComponent<PlayerMana>();
+
+        spellText.text = "";
+        shieldTop.SetActive(false);
+        shieldBottom.SetActive(false);
         
     }
 
@@ -57,11 +74,54 @@ public class GameManager : MonoBehaviour
         
          ammoCount.text = rcw.ammo.ToString();
        }
-
-       
           
           killCount.text = kills.ToString();
+
+
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Z))
+        {
+            hadSwapped = false;
+        }
+        {
+            
+        }
+        if (hsc.handValue == 1)
+        {
+            spellText.text = "";
+        } 
+        else if (hsc.handValue == 2 && hadSwapped == false)
+        {   
+            spellText.text = "shield";
+            StartCoroutine(SpellFade());
+        }
+        else if (hsc.handValue == 3 && hadSwapped == false)
+        {    
+            spellText.text = "fireball";
+            StartCoroutine(SpellFade());
+        }
+        else if( hsc.handValue == 4 && hadSwapped == false) 
+        {    
+            spellText.text = "iceball";
+            StartCoroutine(SpellFade());
+        }
        
-        
+         if(hsc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0)
+         {
+            shieldTop.SetActive(true);
+            shieldBottom.SetActive(true);
+         }
+         else
+         {
+            shieldTop.SetActive(false);
+            shieldBottom.SetActive(false);
+         }
+    }
+
+    IEnumerator SpellFade()
+    {
+        yield return new WaitForSeconds(spellTextTimer);
+        spellText.text = ""; 
+        hadSwapped = true;
+           
     }
 }
