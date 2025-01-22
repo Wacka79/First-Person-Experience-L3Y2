@@ -153,10 +153,13 @@ MonoBehaviour:
   attackDelayCon: 2
   attackRateCon: 1
   isBurning: 0
-  dtimer: 0
+  dtimer: 2
   isSlowed: 0
-  stimer: 0
+  stimer: 5
+  isPushed: 0
+  ptimer: 2
   enemy: {fileID: 278540660460704516}
+  currentPosition: {fileID: 0}
 --- !u!114 &1393249351939727552
 MonoBehaviour:
   m_ObjectHideFlags: 0

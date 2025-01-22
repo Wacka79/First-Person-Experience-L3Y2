@@ -104,7 +104,18 @@ public class GameManager : MonoBehaviour
             spellText.text = "iceball";
             StartCoroutine(SpellFade());
         }
-       
+        else if( hsc.handValue == 5 && hadSwapped == false)
+        {
+            spellText.text = "push";
+            StartCoroutine(SpellFade());
+        }
+        else if( hsc.handValue == 6 && hadSwapped == false)
+        {
+            spellText.text = "gravity";
+            StartCoroutine(SpellFade());
+        }
+
+        
          if(hsc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0)
          {
             shieldTop.SetActive(true);

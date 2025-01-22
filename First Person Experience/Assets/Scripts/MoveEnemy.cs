@@ -19,12 +19,17 @@ public class MoveEnemy : MonoBehaviour
     public bool isSlowed;
     public float stimer;
 
+    [Header("Push")]
+    public bool isPushed;
+    public float ptimer;
+
 
     [Header("Components")]
     GameObject playerObject;
     NavMeshAgent navAgent;
     public GameObject enemy;
     private Renderer enemyRenderer;
+    public Transform currentPosition;
 
     [Header ("Refrerences")]
     Health hsc;
@@ -68,6 +73,7 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentPosition = enemy.transform;
         
 
         if(HsSc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0) // check hand script for shield, button and mana from player mana
@@ -83,6 +89,7 @@ public class MoveEnemy : MonoBehaviour
         Move();
         Burning();
         Slowed();
+        Pushed();
 
 
         if(Time.time > attackDelay)
@@ -130,6 +137,15 @@ public class MoveEnemy : MonoBehaviour
 
         }
     }
+    void Pushed()
+    {
+        if(isPushed == true && hsc.isEnemy == true)
+        {
+            StartCoroutine(pushTimer());
+            enemyRenderer.material.SetColor("_BaseColor" , Color.white);
+            enemy.transform.position += currentPosition.up * HsSc.pushForce; 
+        }
+    }
     void OnCollisionEnter(Collision collision) 
     {
         if(collision.gameObject.tag == ("Fire"))
@@ -141,6 +157,11 @@ public class MoveEnemy : MonoBehaviour
         if(collision.gameObject.tag ==("Slow"))
         {
             isSlowed = true;
+        }
+
+        if(collision.gameObject.tag == ("Push"))
+        {
+            isPushed = true;
         }
     }
     
@@ -160,6 +181,16 @@ public class MoveEnemy : MonoBehaviour
         isSlowed = false;
         attackRate = attackRateCon;
         enemyRenderer.material.SetColor("_BaseColor" , Color.red);
+
+    }
+
+    IEnumerator pushTimer()
+    {
+        yield return new WaitForSeconds(ptimer);
+
+        isPushed = false;
+        enemyRenderer.material.SetColor("_BaseColor" , Color.red);
+        enemy.transform.position -= currentPosition.up * HsSc.pushForce;
 
     }
     

@@ -23,7 +23,17 @@ public class HandSwap : MonoBehaviour
     [Header("Slow")]
     public bool slow;
     public Rigidbody slowProjectile;
-    
+
+    [Header("Push")]
+    public bool push;
+    public Rigidbody pushProjectile;
+    public float pushForce;
+
+    [Header("Gravity")]  
+    public bool gravity;
+    public Rigidbody gravityProjectile; 
+    public GameObject gravityArea;
+    //private GameObject gravityProjectileClone;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +41,9 @@ public class HandSwap : MonoBehaviour
         handValue = 1;
         //MoSc = Enemy.GetComponent<MoveEnemy>();
          plmsc = GameObject.FindWithTag("Player").GetComponent<PlayerMana>();
+         //gravityProjectileClone = gravityProjectile.gameObject;
+         gravityArea = gravityProjectile.transform.GetChild(0).gameObject;
+         gravityArea.SetActive(false);
     }
 
     // Update is called once per frame
@@ -47,9 +60,9 @@ public class HandSwap : MonoBehaviour
 
         if(handValue <= 0)
         {
-            handValue = 4;
+            handValue = 6;
         }
-        if(handValue >= 5)
+        if(handValue >= 7)
         {
             handValue = 1;
         }
@@ -58,6 +71,8 @@ public class HandSwap : MonoBehaviour
        //Shield();
        Fire();
        Slow();
+       Push();
+       Gravity();
     }
 
     void Colour()
@@ -68,6 +83,8 @@ public class HandSwap : MonoBehaviour
             fire = false;
             shield = false;
             slow = false;
+            push = false;
+            gravity = false;
         }
         else if(handValue == 2)
         {
@@ -75,6 +92,8 @@ public class HandSwap : MonoBehaviour
             fire = false;
             shield = true;
             slow = false;
+            push = false;
+            gravity = false;
         }
         else if(handValue == 3)
         {
@@ -82,6 +101,8 @@ public class HandSwap : MonoBehaviour
             fire = true;
             shield = false;
             slow = false;
+            push = false;
+            gravity = false;
         }
         else if(handValue == 4)
         {
@@ -89,6 +110,26 @@ public class HandSwap : MonoBehaviour
             fire = false;
             shield = false;
             slow = true;
+            push = false;
+            gravity = false;
+        }
+        else if(handValue == 5)
+        {
+            handRenderer.material.SetColor("_BaseColor" , Color.white);
+            fire = false;
+            shield = false;
+            slow = false;
+            push = true;
+            gravity = false;
+        }
+        else if(handValue == 6)
+        {
+            handRenderer.material.SetColor("_BaseColor" , Color.black);
+            fire = false;
+            shield = false;
+            slow = false;
+            push = false;
+            gravity = true;
         }
     }  
 
@@ -133,6 +174,33 @@ public class HandSwap : MonoBehaviour
 
             Destroy(clone.gameObject, 3);
             plmsc.currentMana = plmsc.currentMana - 10f;
+        }
+    }
+
+    void Push()
+    {
+        if( push == true && Input.GetKeyDown(KeyCode.Mouse0) && plmsc.currentMana > 0f)
+        {
+            Rigidbody clone;
+            clone = Instantiate(pushProjectile, firePoint.position, head.rotation);
+
+            clone.velocity = clone.transform.forward * 35;
+
+            Destroy(clone.gameObject, 3);
+            plmsc.currentMana = plmsc.currentMana - 2f;
+        }
+    }
+
+    void Gravity()
+    {
+        if( gravity == true && Input.GetKeyDown(KeyCode.Mouse0) && plmsc.currentMana > 0f)
+        {
+            Rigidbody clone;
+            clone = Instantiate(gravityProjectile, firePoint.position, head.rotation);
+
+            clone.velocity = clone.transform.forward * 25;
+
+            Destroy(clone.gameObject, 3);
         }
     }
 

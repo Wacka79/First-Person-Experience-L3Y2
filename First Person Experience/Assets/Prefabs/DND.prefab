@@ -1386,7 +1386,7 @@ Transform:
   m_GameObject: {fileID: 6422323287014942213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.215168, y: 0.9266958, z: 14.661806}
+  m_LocalPosition: {x: 0, y: 1.5, z: 8.289999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2629,13 +2629,18 @@ PrefabInstance:
       objectReference: {fileID: 7456153084787309132}
     - target: {fileID: 4803685525810419432, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1759168
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803685525810419432, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 4803685525810419432, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.26
+      value: 0.164
       objectReference: {fileID: 0}
     - target: {fileID: 4803685525810419432, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
@@ -2736,6 +2741,13 @@ MonoBehaviour:
   slow: 0
   slowProjectile: {fileID: -1947703994094931349, guid: 76e8aa444eafbd442be5dbf4a8f3df7c,
     type: 3}
+  push: 0
+  pushProjectile: {fileID: 3799460286615529762, guid: d190f578857097c4c9a97021d0090826,
+    type: 3}
+  pushForce: 0.02
+  gravity: 0
+  gravityProjectile: {fileID: 0}
+  gravityArea: {fileID: 0}
 --- !u!114 &8496604223581116480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2748,11 +2760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb08d5b94c82a54db366a0c6d7a2496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMana: 50
+  maxMana: 60
   currentMana: 0
   manaSlider: {fileID: 7765781390703806325}
   controller: {fileID: 7206742719194184376}
-  rechargeRate: 12
+  rechargeRate: 15
   isRecharging: 0
 --- !u!143 &7206742719194184376 stripped
 CharacterController:
