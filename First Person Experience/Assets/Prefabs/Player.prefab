@@ -426,13 +426,16 @@ MonoBehaviour:
   movementSpeed: 5
   gravity: 0
   gravityLimit: -10
-  gravityMultiplier: 5
+  gravityLimitCon: 0
+  gravityMultiplierCon: 0
   jumpForce: 5
   doubleJumpMax: 2
   cameraSpeed: 5
   controller: {fileID: 6145094991868765929}
   cam: {fileID: 0}
   playerHead: {fileID: 8292536311316420791}
+  bbox: {fileID: 0}
+  spawnPoint: 
 --- !u!114 &3241307062363417857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  maxHealth: 0
   healthSlider: {fileID: 0}
 --- !u!1 &8292536311316420791
 GameObject:

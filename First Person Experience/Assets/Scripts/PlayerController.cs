@@ -103,18 +103,18 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift) && controller.isGrounded == true)
         {
             movementSpeed = sprintSpeed;
-            gravityMultiplier = gravityMultiplierCon + 3;
+            //gravityMultiplier = gravityMultiplierCon + 3;
         }
         else
         {
             movementSpeed = walkSpeed;
-            gravityMultiplier = gravityMultiplierCon;
+            //gravityMultiplier = gravityMultiplierCon;
         }
     }
 
     void Glide()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(controller.isGrounded == false && Input.GetKey(KeyCode.Space)) // check if player is in the air and holding space, change gravity
         {
             //gravityMultiplier = gravityMultiplier / 6;
             gravityLimit = gravityLimitCon / 40;

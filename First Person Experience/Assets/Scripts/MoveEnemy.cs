@@ -23,6 +23,9 @@ public class MoveEnemy : MonoBehaviour
     public bool isPushed;
     public float ptimer;
 
+    [Header("Gravity")]
+    public bool isGravity;
+
 
     [Header("Components")]
     GameObject playerObject;
@@ -38,6 +41,7 @@ public class MoveEnemy : MonoBehaviour
     PlayerMana plm;
 
     
+    public Transform newPos;
     
 
 
@@ -74,6 +78,7 @@ public class MoveEnemy : MonoBehaviour
     void Update()
     {
         currentPosition = enemy.transform;
+        //HsSc.gravityPoint = HsSc.gravityArea.transform;
         
 
         if(HsSc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0) // check hand script for shield, button and mana from player mana
@@ -90,6 +95,7 @@ public class MoveEnemy : MonoBehaviour
         Burning();
         Slowed();
         Pushed();
+        Gravity();
 
 
         if(Time.time > attackDelay)
@@ -146,22 +152,45 @@ public class MoveEnemy : MonoBehaviour
             enemy.transform.position += currentPosition.up * HsSc.pushForce; 
         }
     }
+
+    void Gravity()
+    {
+        // if(isGravity == true && hsc.isEnemy == true)
+        // {
+        //    if(HsSc.gravityArea != null && enemy != null)
+        //    {
+
+            //currentPosition.position = HsSc.gravityArea.transform.position;
+
+
+            if (newPos != null)
+            {
+                enemy.transform.position = Vector3.Lerp(enemy.transform.position, newPos.position, Time.deltaTime * 10f);
+            }
+        //    }
+        // }
+    }
     void OnCollisionEnter(Collision collision) 
     {
-        if(collision.gameObject.tag == ("Fire"))
+        if(collision.transform.CompareTag ("Fire"))
         {
             isBurning = true;
 
         }
         
-        if(collision.gameObject.tag ==("Slow"))
+        if(collision.transform.CompareTag("Slow"))
         {
             isSlowed = true;
         }
 
-        if(collision.gameObject.tag == ("Push"))
+        if(collision.transform.CompareTag("Push"))
         {
             isPushed = true;
+        }
+        if(collision.gameObject.CompareTag("Gravity"))
+        {
+           isGravity = true;
+           
         }
     }
     

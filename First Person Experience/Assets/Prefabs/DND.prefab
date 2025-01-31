@@ -309,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 2068361282115357334}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.46500003, y: -0.02699995, z: 1.0240002}
+  m_LocalPosition: {x: 0.46500003, y: -0.02699995, z: 1.281}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1246,7 +1246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6287980154837226362
 Transform:
   m_ObjectHideFlags: 0
@@ -1386,7 +1386,7 @@ Transform:
   m_GameObject: {fileID: 6422323287014942213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 8.289999}
+  m_LocalPosition: {x: 0.215168, y: 0.9266958, z: 14.661806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1432,7 +1432,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 255
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2607,10 +2607,30 @@ PrefabInstance:
       propertyPath: gravityMultiplierCon
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2577592606613667213, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577592606613667213, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214273196862434391, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3214273196862434391, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214273196862434391, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3241307062363417857, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
@@ -2630,7 +2650,7 @@ PrefabInstance:
     - target: {fileID: 4803685525810419432, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1759168
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 4803685525810419432, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
@@ -2677,9 +2697,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7916780449711342773, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942636082505997132, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942636082505997132, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8151446027979652833, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151446027979652833, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292536311316420791, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292536311316420791, guid: 23be5b6ec5c20194fa4013d5cc0d0f3f,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2746,8 +2796,10 @@ MonoBehaviour:
     type: 3}
   pushForce: 0.02
   gravity: 0
-  gravityProjectile: {fileID: 0}
+  gravityProjectile: {fileID: 8434655357930314414, guid: 0c85697116f459f4585277716e57c0bd,
+    type: 3}
   gravityArea: {fileID: 0}
+  gravityPoint: {fileID: 0}
 --- !u!114 &8496604223581116480
 MonoBehaviour:
   m_ObjectHideFlags: 0

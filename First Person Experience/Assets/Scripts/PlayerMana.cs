@@ -15,7 +15,7 @@ public class PlayerMana : MonoBehaviour
     void Start()
     {
         currentMana = maxMana; // start puts current mana to max mana
-        manaSlider.maxValue = maxMana;
+        manaSlider.maxValue = maxMana; 
         isRecharging = false;
     }
 
@@ -44,9 +44,9 @@ public class PlayerMana : MonoBehaviour
     {
         if( controller.velocity == Vector3.zero)
         {
-             if (Input.GetKeyUp(KeyCode.Q) && currentMana < maxMana  ) // check movement mana and button held (line 42 + 44)
+             if (Input.GetKeyUp(KeyCode.Q) && currentMana < maxMana  ) // check movement mana and button  (line 42 + 44)
              {
-                isRecharging = true;
+                isRecharging = true; // use of bool means mana only recharges when not pressing anything else
 
              
              }

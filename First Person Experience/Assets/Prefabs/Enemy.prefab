@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1393249351939727552}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,8 +158,10 @@ MonoBehaviour:
   stimer: 5
   isPushed: 0
   ptimer: 2
+  isGravity: 0
   enemy: {fileID: 278540660460704516}
   currentPosition: {fileID: 0}
+  newPos: {fileID: 0}
 --- !u!114 &1393249351939727552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7296726823160053034
 Transform:
   m_ObjectHideFlags: 0

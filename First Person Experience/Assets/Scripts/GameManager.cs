@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         {
             
         }
-        if (hsc.handValue == 1)
+        if (hsc.handValue == 1) // add spells name every time player swaps, spell only shows for a few seconds
         {
             spellText.text = "";
         } 
@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
         }
 
         
-         if(hsc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0)
+         if(hsc.shield == true && Input.GetKey(KeyCode.Mouse0 ) && plm.currentMana > 0) 
          {
             shieldTop.SetActive(true);
             shieldBottom.SetActive(true);
@@ -126,9 +126,9 @@ public class GameManager : MonoBehaviour
             shieldTop.SetActive(false);
             shieldBottom.SetActive(false);
          }
-    }
+    } // check hand script for shield, button and mana from player mana, activate shield visual if true, deactivate if false
 
-    IEnumerator SpellFade()
+    IEnumerator SpellFade() // spell text fade timer
     {
         yield return new WaitForSeconds(spellTextTimer);
         spellText.text = ""; 

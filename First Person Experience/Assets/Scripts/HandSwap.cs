@@ -7,7 +7,7 @@ public class HandSwap : MonoBehaviour
     public int handValue;
     //PlayerInteractions pli;
     public GameObject hand;
-    public Renderer handRenderer;
+    public Renderer handRenderer; //colour changing component
 
     PlayerMana plmsc;
     [Header("Shield")]
@@ -33,6 +33,7 @@ public class HandSwap : MonoBehaviour
     public bool gravity;
     public Rigidbody gravityProjectile; 
     public GameObject gravityArea;
+    public Transform gravityPoint;
     //private GameObject gravityProjectileClone;
     // Start is called before the first frame update
     void Start()
@@ -40,10 +41,10 @@ public class HandSwap : MonoBehaviour
         handRenderer = hand.GetComponent<MeshRenderer>();
         handValue = 1;
         //MoSc = Enemy.GetComponent<MoveEnemy>();
-         plmsc = GameObject.FindWithTag("Player").GetComponent<PlayerMana>();
+         plmsc = GameObject.FindWithTag("Player").GetComponent<PlayerMana>(); // get current player mana
          //gravityProjectileClone = gravityProjectile.gameObject;
-         gravityArea = gravityProjectile.transform.GetChild(0).gameObject;
-         gravityArea.SetActive(false);
+         gravityArea = gravityProjectile.transform.GetChild(0).gameObject; // find the child object of gravityProjectile
+         gravityArea.SetActive(false); // set false on start
     }
 
     // Update is called once per frame
@@ -53,16 +54,16 @@ public class HandSwap : MonoBehaviour
         {
            handValue = handValue + 1;
         }
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.Z)) // change current hand value
         {
            handValue = handValue - 1;
         }
 
-        if(handValue <= 0)
+        if(handValue <= 0) // stop hand value from going below 1, sets to 6
         {
             handValue = 6;
         }
-        if(handValue >= 7)
+        if(handValue >= 7) // stop hand value from going above 6, sets to 1
         {
             handValue = 1;
         }
@@ -75,7 +76,7 @@ public class HandSwap : MonoBehaviour
        Gravity();
     }
 
-    void Colour()
+    void Colour() // change hand colour based on hand value, sets bools for magic types
     {
          if(handValue == 1)
         {
@@ -152,13 +153,13 @@ public class HandSwap : MonoBehaviour
         if( fire == true && Input.GetKeyDown(KeyCode.Mouse0) && plmsc.currentMana > 0f)
         {
             Rigidbody clone;
-            clone = Instantiate(fireProjectile, firePoint.position, head.rotation);
+            clone = Instantiate(fireProjectile, firePoint.position, head.rotation); // spawn fire projectile and where player is looking
 
             //clone.velocity = transform.TransformDirection(Vector3.forward * 25);
-            clone.velocity = clone.transform.forward * 25;
+            clone.velocity = clone.transform.forward * 25; // add force to projectile on spawn
 
-            Destroy(clone.gameObject, 3);
-            plmsc.currentMana = plmsc.currentMana - 6.25f;
+            Destroy(clone.gameObject, 3); // destyroy projectile after 3 seconds
+            plmsc.currentMana = plmsc.currentMana - 6.25f; // reduce player mana
         }
     }
 

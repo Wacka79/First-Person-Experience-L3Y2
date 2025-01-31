@@ -22,8 +22,17 @@ public class Gravity : MonoBehaviour
         if(!collision.transform.CompareTag("Player"))
         {
             // HsSc.gravityProjectile.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-            HsSc.gravityProjectile.isKinematic = true;
-            HsSc.gravityArea.SetActive(true);
+            transform.GetComponent<Rigidbody>().isKinematic = true; // stop gravity projectile from moving on collision with anything
+            transform.GetChild(0).gameObject.SetActive(true); // find child object then set active
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Enemy"))
+        {
+            other.GetComponent<MoveEnemy>().newPos = gameObject.transform;
+            
         }
     }
 }
