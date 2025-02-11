@@ -24813,35 +24813,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3301410824687758679, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.215168
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301410824687758679, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.9266958
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301410824687758679, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 14.661806
-      objectReference: {fileID: 0}
     - target: {fileID: 4597069969803396279, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
         type: 3}
       propertyPath: m_Name
       value: DND
       objectReference: {fileID: 0}
-    - target: {fileID: 8353794194785995449, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
+    - target: {fileID: 8496604223581116480, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
         type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 8353794194785995449, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.04
+      propertyPath: manaSlider
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8881680951040458408, guid: 3cc1b5cb829d6a74ea61bc5e376c6d83,
         type: 3}

@@ -38,13 +38,18 @@ public class HandSwap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        handRenderer = hand.GetComponent<MeshRenderer>();
-        handValue = 1;
-        //MoSc = Enemy.GetComponent<MoveEnemy>();
+         hand = GameObject.Find("Player").transform.GetChild(0).GetChild(0).GetChild(1).gameObject; // find hand object
+         firePoint = GameObject.Find("Player").transform.GetChild(0).GetChild(0).GetChild(3).transform; // find fire point object
+         head = GameObject.Find("Player").transform.GetChild(0).GetChild(0).transform; // find head object
+         handRenderer = hand.GetComponent<MeshRenderer>();
+
+         //MoSc = Enemy.GetComponent<MoveEnemy>();
+
          plmsc = GameObject.FindWithTag("Player").GetComponent<PlayerMana>(); // get current player mana
          //gravityProjectileClone = gravityProjectile.gameObject;
          gravityArea = gravityProjectile.transform.GetChild(0).gameObject; // find the child object of gravityProjectile
          gravityArea.SetActive(false); // set false on start
+         handValue = 1;
     }
 
     // Update is called once per frame
@@ -202,6 +207,7 @@ public class HandSwap : MonoBehaviour
             clone.velocity = clone.transform.forward * 25;
 
             Destroy(clone.gameObject, 3);
+            plmsc.currentMana = plmsc.currentMana - 12.5f;
         }
     }
 

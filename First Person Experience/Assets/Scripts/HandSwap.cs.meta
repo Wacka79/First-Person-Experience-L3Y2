@@ -3,7 +3,21 @@ guid: 88d9c9658889fc04285bfdf8b28bcaf3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - hand: {instanceID: 0}
+  - handRenderer: {instanceID: 0}
+  - fireProjectile: {fileID: 2142870229203983459, guid: bce2bb5a7b62027438de14d98d5029e7,
+      type: 3}
+  - firePoint: {instanceID: 0}
+  - head: {instanceID: 0}
+  - slowProjectile: {fileID: -1947703994094931349, guid: 76e8aa444eafbd442be5dbf4a8f3df7c,
+      type: 3}
+  - pushProjectile: {fileID: 3799460286615529762, guid: d190f578857097c4c9a97021d0090826,
+      type: 3}
+  - gravityProjectile: {fileID: 8434655357930314414, guid: 0c85697116f459f4585277716e57c0bd,
+      type: 3}
+  - gravityArea: {instanceID: 0}
+  - gravityPoint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

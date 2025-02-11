@@ -14,6 +14,7 @@ public class PlayerMana : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manaSlider = GameObject.Find("ManaSlider").GetComponent<Slider>(); // find slider in scene
         currentMana = maxMana; // start puts current mana to max mana
         manaSlider.maxValue = maxMana; 
         isRecharging = false;

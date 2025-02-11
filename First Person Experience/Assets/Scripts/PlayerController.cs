@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
         walkSpeed = movementSpeed;
         gravityMultiplier = gravityMultiplierCon;
         gravityLimit = gravityLimitCon;
+        //controller = GameObject.Find("Player").GetComponent<CharacterController>();
+        cam = GameObject.Find("Main Camera");
+        playerHead = GameObject.Find("Player").transform.GetChild(0).GetChild(0).gameObject;
+        //bbox = GameObject.Find("Canvas").transform.GetChild(6).GetComponent<Animator>();
+        
         
     }
 
